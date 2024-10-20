@@ -42,4 +42,11 @@ public class Table {
         }
         System.out.println("total :"+ price + " $" );
     }
+    public final double getInvoiceSum(){
+        double price = 0;
+        for (Product product : productList) {
+            price += product.getPrice();
+        }
+        return price;
+    }
 }
