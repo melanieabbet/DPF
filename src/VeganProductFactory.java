@@ -1,3 +1,4 @@
+//concrete factory for variant "Vegan"
 public class VeganProductFactory implements ProductFactory {
     @Override
     public Drink createDrink(String name, double price){

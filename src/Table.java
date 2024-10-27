@@ -7,6 +7,7 @@ public class Table {
     private final LocalDateTime date;
     private final TypeTable type;
     private final ArrayList<Product> productList;
+    private TableState tableState;
 
     public Table(String client, TypeTable type){
         this.client = client;
@@ -48,5 +49,9 @@ public class Table {
             price += product.getPrice();
         }
         return price;
+    }
+
+    public void changeState(TableState tableState){
+        this.tableState = tableState;
     }
 }
