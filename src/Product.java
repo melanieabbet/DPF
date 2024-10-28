@@ -19,5 +19,5 @@ public abstract class Product {
     public double getPrice(){
         return price;
     }
-    public abstract String getType();
+    public String getType(){return null;}
 }

@@ -112,28 +112,38 @@ public class Restaurant {
 //        restaurant.displayProducts();
 
         //LAB 2.2 - Emulate Table state change
-        Drink drink1 = new Drink("Coke", 2.50, TypeDrink.LIGHT);
-        restaurant.addProduct(drink1);
+//        Drink drink1 = new Drink("Coke", 2.50, TypeDrink.LIGHT);
+//        restaurant.addProduct(drink1);
+//
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.print("Enter new reservation for client name: ");
+//        String clientName = scanner.nextLine();
+//
+//        System.out.print("Enter table type (DIET, VEGAN, PLEASURE): ");
+//        String typeInput = scanner.nextLine().toUpperCase();
+//        TypeTable tableType = TypeTable.valueOf(typeInput);
+//
+//        //Create the table
+//        Table table = new Table(clientName, tableType);
+//        table.changeState(ReservedTableState.getInstance());
+//        restaurant.addTable(table);
+//        System.out.print("La table est : "+ table.getState());
+//        table.getState().display(table);
+//        table.getState().welcoming(table);
+//        table.getState().serve(table,drink1);
+//        table.getState().display(table);
+//        table.getState().close(table);
+//        table.getState().display(table);
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter new reservation for client name: ");
-        String clientName = scanner.nextLine();
+        // LAB 3.1 Emulate extra Drink
+        Drink drink1 = new Drink("Coke", 2, TypeDrink.LIGHT);
+        System.out.println(drink1.getPrice());
+        Product drinkExtraDose = new ExtraDoseDecorator(drink1);
+        System.out.println(drinkExtraDose.getPrice());
+        Product drinkExtraDoseExtraTaste = new ExtraTasteDecorator(drinkExtraDose);
+        System.out.println(drinkExtraDoseExtraTaste.getPrice());
 
-        System.out.print("Enter table type (DIET, VEGAN, PLEASURE): ");
-        String typeInput = scanner.nextLine().toUpperCase();
-        TypeTable tableType = TypeTable.valueOf(typeInput);
 
-        //Create the table
-        Table table = new Table(clientName, tableType);
-        table.changeState(ReservedTableState.getInstance());
-        restaurant.addTable(table);
-        System.out.print("La table est : "+ table.getState());
-        table.getState().display(table);
-        table.getState().welcoming(table);
-        table.getState().serve(table,drink1);
-        table.getState().display(table);
-        table.getState().close(table);
-        table.getState().display(table);
     }
 
 }

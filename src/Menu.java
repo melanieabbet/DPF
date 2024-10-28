@@ -8,11 +8,6 @@ public class Menu extends Product {
         super(name);
         this.products = new ArrayList<>();
     }
-    @Override
-    public String getType() {
-        return null;
-    }
-
     public void addProduct(Product product) {
         products.add(product);
     }
