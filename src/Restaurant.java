@@ -63,53 +63,77 @@ public class Restaurant {
 
         //LAB 1.2 - Emulate Client interaction to use product factory
 
-        //01 client & table
+//        //01 client & table
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.print("Enter client name: ");
+//        String clientName = scanner.nextLine();
+//
+//        System.out.print("Enter table type (DIET, VEGAN, PLEASURE): ");
+//        String typeInput = scanner.nextLine().toUpperCase();
+//        TypeTable tableType = TypeTable.valueOf(typeInput);
+//
+//        Table table = new Table(clientName, tableType);
+//        restaurant.addTable(table);
+//
+//        // 02 Products
+//        ProductFactory productFactory = TableFactory.createTableType(tableType);
+//        System.out.println("Adding dishes...");
+//
+//        while (true) {
+//            System.out.print("Enter dish name (or type 'exit' to finish adding dishes): ");
+//
+//            String dishName = scanner.nextLine();
+//            if (dishName.equalsIgnoreCase("exit")) {
+//                break;
+//            }
+//            System.out.print("Enter dish price: ");
+//            double dishPrice = Double.parseDouble(scanner.nextLine());
+//
+//            Product dish = productFactory.createDish(dishName, dishPrice);
+//            table.addProduct(dish); // Add to table
+//            restaurant.addProduct(dish); // Add to Restaurant
+//        }
+//        while (true) {
+//            System.out.print("Enter drink name (or type 'exit' to finish adding drink): ");
+//
+//            String drinkName = scanner.nextLine();
+//            if (drinkName.equalsIgnoreCase("exit")) {
+//                break;
+//            }
+//            System.out.print("Enter drink price: ");
+//            double drinkPrice = Double.parseDouble(scanner.nextLine());
+//
+//            Product drink = productFactory.createDrink(drinkName, drinkPrice);
+//            table.addProduct(drink); // Add to table
+//            restaurant.addProduct(drink); // Add to Restaurant
+//        }
+//        table.printTableOrder();
+//        scanner.close();
+//        restaurant.displayProducts();
+
+        //LAB 2.2 - Emulate Table state change
+        Drink drink1 = new Drink("Coke", 2.50, TypeDrink.LIGHT);
+        restaurant.addProduct(drink1);
+
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter client name: ");
+        System.out.print("Enter new reservation for client name: ");
         String clientName = scanner.nextLine();
 
         System.out.print("Enter table type (DIET, VEGAN, PLEASURE): ");
         String typeInput = scanner.nextLine().toUpperCase();
         TypeTable tableType = TypeTable.valueOf(typeInput);
 
+        //Create the table
         Table table = new Table(clientName, tableType);
+        table.changeState(ReservedTableState.getInstance());
         restaurant.addTable(table);
-
-        // 02 Products
-        ProductFactory productFactory = TableFactory.createTableType(tableType);
-        System.out.println("Adding dishes...");
-
-        while (true) {
-            System.out.print("Enter dish name (or type 'exit' to finish adding dishes): ");
-
-            String dishName = scanner.nextLine();
-            if (dishName.equalsIgnoreCase("exit")) {
-                break;
-            }
-            System.out.print("Enter dish price: ");
-            double dishPrice = Double.parseDouble(scanner.nextLine());
-
-            Product dish = productFactory.createDish(dishName, dishPrice);
-            table.addProduct(dish); // Add to table
-            restaurant.addProduct(dish); // Add to Restaurant
-        }
-        while (true) {
-            System.out.print("Enter drink name (or type 'exit' to finish adding drink): ");
-
-            String drinkName = scanner.nextLine();
-            if (drinkName.equalsIgnoreCase("exit")) {
-                break;
-            }
-            System.out.print("Enter drink price: ");
-            double drinkPrice = Double.parseDouble(scanner.nextLine());
-
-            Product drink = productFactory.createDrink(drinkName, drinkPrice);
-            table.addProduct(drink); // Add to table
-            restaurant.addProduct(drink); // Add to Restaurant
-        }
-        table.printTableOrder();
-        scanner.close();
-        restaurant.displayProducts();
+        System.out.print("La table est : "+ table.getState());
+        table.getState().display(table);
+        table.getState().welcoming(table);
+        table.getState().serve(table,drink1);
+        table.getState().display(table);
+        table.getState().close(table);
+        table.getState().display(table);
     }
 
 }

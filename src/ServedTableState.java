@@ -22,11 +22,12 @@ public class ServedTableState implements TableState {
     }
     @Override
     public void display(Table table) {
+        System.out.println("There your total check:");
         table.printTableOrder();
     }
     @Override
     public void close(Table table) {
-        System.out.println(table.getInvoiceSum());
+        System.out.println("Thank you for the visit you paid: " + table.getInvoiceSum());
         //Add table bill to income
         Income income = Income.getInstance();
         income.addTableIncome(table);

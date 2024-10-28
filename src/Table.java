@@ -54,4 +54,5 @@ public class Table {
     public void changeState(TableState tableState){
         this.tableState = tableState;
     }
+    public TableState getState(){return tableState;}
 }
