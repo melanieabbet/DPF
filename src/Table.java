@@ -14,6 +14,7 @@ public class Table {
         this.date = LocalDateTime.now();
         this.type = type;
         this.productList = new ArrayList<>();
+        //ajout état par défaut
     }
 
     public String getClient() {

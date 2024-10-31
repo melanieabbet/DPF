@@ -5,8 +5,5 @@ ProductDecorator(Product source){
     super(source.getName(), source.getPrice());
     this.wrappee = source;
 }
-@Override
-    public double getPrice(){
-    return wrappee.getPrice(); //get the price of based product
-}
+
 }

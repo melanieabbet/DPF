@@ -136,13 +136,14 @@ public class Restaurant {
 //        table.getState().display(table);
 
         // LAB 3.1 Emulate extra Drink
-        Drink drink1 = new Drink("Coke", 2, TypeDrink.LIGHT);
-        System.out.println(drink1.getPrice());
-        Product drinkExtraDose = new ExtraDoseDecorator(drink1);
-        System.out.println(drinkExtraDose.getPrice());
-        Product drinkExtraDoseExtraTaste = new ExtraTasteDecorator(drinkExtraDose);
-        System.out.println(drinkExtraDoseExtraTaste.getPrice());
+//        Drink drink1 = new Drink("Coke", 2, TypeDrink.LIGHT);
+//        System.out.println(drink1.getPrice());
+//        Product drinkExtraDose = new ExtraDoseDecorator(drink1);
+//        System.out.println(drinkExtraDose.getPrice());
+//        Product drinkExtraDoseExtraTaste = new ExtraTasteDecorator(drinkExtraDose);
+//        System.out.println(drinkExtraDoseExtraTaste.getPrice());
 
+        // LAB 3.2 Patron Builder
 
     }
 
