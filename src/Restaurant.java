@@ -1,6 +1,7 @@
 import Enum.TypeDish;
 import Enum.TypeDrink;
 import Enum.TypeTable;
+import Enum.TypeMenu;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -36,8 +37,8 @@ public class Restaurant {
     public static void main(String[] args) {
         Restaurant restaurant = new Restaurant();
 
-        // LAB 1.1
-        // Creation of some products and table to test
+////         LAB 1.1
+////         Creation of some products and table to test
 //        Drink drink1 = new Drink("Coke", 2.50, TypeDrink.LIGHT);
 //        Drink drink2 = new Drink("Tea", 1.80, TypeDrink.ALCOHOLIC);
 //        Drink drink3 = new Drink("Beer", 4.00, TypeDrink.ALCOHOLIC);
@@ -55,14 +56,14 @@ public class Restaurant {
 //
 //        restaurant.displayProducts();
 //
-//        Menu dietMenu = new Menu("Low carbs");
+//        Menu dietMenu = new Menu("Low carbs", TypeMenu.DIET);
 //        dietMenu.addProduct(drink1);
 //        dietMenu.addProduct(dish1);
 //        System.out.println("Our Menu : ");
 //        dietMenu.displayMenu();
-
-        //LAB 1.2 - Emulate Client interaction to use product factory
-
+//
+//        //LAB 1.2 - Emulate Client interaction to use product factory
+//
 //        //01 client & table
 //        Scanner scanner = new Scanner(System.in);
 //        System.out.print("Enter client name: ");
@@ -72,7 +73,8 @@ public class Restaurant {
 //        String typeInput = scanner.nextLine().toUpperCase();
 //        TypeTable tableType = TypeTable.valueOf(typeInput);
 //
-//        Table table = new Table(clientName, tableType);
+//        Tax TaxPrivate;
+//        Table table = new Table(clientName, tableType, new TaxPrivate());
 //        restaurant.addTable(table);
 //
 //        // 02 Products
@@ -110,21 +112,21 @@ public class Restaurant {
 //        table.printTableOrder();
 //        scanner.close();
 //        restaurant.displayProducts();
-
-        //LAB 2.2 - Emulate Table state change
-//        Drink drink1 = new Drink("Coke", 2.50, TypeDrink.LIGHT);
+//
+//        //LAB 2.2 - Emulate Table state change
+//        Drink drink4 = new Drink("Coke", 2.50, TypeDrink.LIGHT);
 //        restaurant.addProduct(drink1);
 //
-//        Scanner scanner = new Scanner(System.in);
+//        Scanner scanner2 = new Scanner(System.in);
 //        System.out.print("Enter new reservation for client name: ");
-//        String clientName = scanner.nextLine();
+//        String clientName2 = scanner2.nextLine();
 //
 //        System.out.print("Enter table type (DIET, VEGAN, PLEASURE): ");
-//        String typeInput = scanner.nextLine().toUpperCase();
-//        TypeTable tableType = TypeTable.valueOf(typeInput);
+//        String typeInput2 = scanner2.nextLine().toUpperCase();
+//        TypeTable tableType2 = TypeTable.valueOf(typeInput);
 //
 //        //Create the table
-//        Table table = new Table(clientName, tableType);
+//        Table table3 = new Table(clientName2, tableType2,new TaxPrivate());
 //        table.changeState(ReservedTableState.getInstance());
 //        restaurant.addTable(table);
 //        System.out.print("La table est : "+ table.getState());
@@ -134,25 +136,35 @@ public class Restaurant {
 //        table.getState().display(table);
 //        table.getState().close(table);
 //        table.getState().display(table);
-
-        // LAB 3.1 Emulate extra Drink
-//        Drink drink1 = new Drink("Coke", 2, TypeDrink.LIGHT);
-//        System.out.println(drink1.getPrice());
-//        Product drinkExtraDose = new ExtraDoseDecorator(drink1);
+//
+//         //LAB 3.1 Emulate extra Drink
+//        Drink drink5 = new Drink("Coke", 2, TypeDrink.LIGHT);
+//        System.out.println(drink5.getPrice());
+//        Product drinkExtraDose = new ExtraDoseDecorator(drink5);
 //        System.out.println(drinkExtraDose.getPrice());
 //        Product drinkExtraDoseExtraTaste = new ExtraTasteDecorator(drinkExtraDose);
 //        System.out.println(drinkExtraDoseExtraTaste.getPrice());
+//
+//         //LAB 3.2 Patron Builder
+//        MenuBuilder menuDietBuilder = new MenuPleasureBuilder("Menu light");
+//        MenuClassicDirector director1 = new MenuClassicDirector(menuDietBuilder);
+//        Menu dietMenu2 = director1.constructClassicMenu();
+//        dietMenu2.displayMenu();
+//
+//        MenuBuilder menuRichBuilder = new MenuPleasureBuilder("Menu party");
+//        MenuPremiumDirector director2 = new MenuPremiumDirector(menuRichBuilder);
+//        Menu richMenu = director2.constructPremiumMenu();
+//        richMenu.displayMenu();
 
-        // LAB 3.2 Patron Builder
-        MenuBuilder menuDietBuilder = new MenuPleasureBuilder("Menu light");
-        MenuClassicDirector director1 = new MenuClassicDirector(menuDietBuilder);
-        Menu dietMenu = director1.constructClassicMenu();
-        dietMenu.displayMenu();
-
-        MenuBuilder menuRichBuilder = new MenuPleasureBuilder("Menu party");
-        MenuPremiumDirector director2 = new MenuPremiumDirector(menuRichBuilder);
-        Menu richMenu = director2.constructPremiumMenu();
-        richMenu.displayMenu();
+         //LAB 4.1 Bridge
+        Table privateTable = new Table("Client Privé", TypeTable.PLEASURE, new TaxPrivate());
+        privateTable.addProduct(new RichDish("Soup", 15.0));
+        privateTable.addProduct(new AlcoolDrink("Beer", 5.0));
+        System.out.println(privateTable.calculateTax());
+        Table companyTable = new Table("Client Privé", TypeTable.PLEASURE, new TaxCompany());
+        companyTable.addProduct(new RichDish("Soup", 15.0));
+        companyTable.addProduct(new AlcoolDrink("Beer", 5.0));
+        System.out.println(companyTable.calculateTax());
 
     }
 

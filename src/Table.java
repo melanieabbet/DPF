@@ -8,13 +8,15 @@ public class Table {
     private final TypeTable type;
     private final ArrayList<Product> productList;
     private TableState tableState;
+    private Tax tableTax;
 
-    public Table(String client, TypeTable type){
+    public Table(String client, TypeTable type, Tax tableTax){
         this.client = client;
         this.date = LocalDateTime.now();
         this.type = type;
         this.productList = new ArrayList<>();
         this.changeState(ReservedTableState.getInstance());
+        this.tableTax = tableTax;
     }
 
     public String getClient() {
@@ -33,8 +35,6 @@ public class Table {
     public void addProduct(Product product){
         productList.add(product);
     }
-
-
     public void printTableOrder(){
         double price = 0;
         System.out.println(client + ": " + type + "," + getDate() );
@@ -51,9 +51,12 @@ public class Table {
         }
         return price;
     }
-
     public void changeState(TableState tableState){
         this.tableState = tableState;
     }
     public TableState getState(){return tableState;}
+    public double calculateTax(){
+        double total = getInvoiceSum();
+        return tableTax.calculateTax(total); // Let the API define the appropriate calcul
+    };
 }
