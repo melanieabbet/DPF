@@ -5,7 +5,6 @@ public class Dish extends Product {
         super(name,price);
         this.type = type;
     }
-    @Override
     public String getType(){
         return type.name();
     }

@@ -144,6 +144,15 @@ public class Restaurant {
 //        System.out.println(drinkExtraDoseExtraTaste.getPrice());
 
         // LAB 3.2 Patron Builder
+        MenuBuilder menuDietBuilder = new MenuPleasureBuilder("Menu light");
+        MenuClassicDirector director1 = new MenuClassicDirector(menuDietBuilder);
+        Menu dietMenu = director1.constructClassicMenu();
+        dietMenu.displayMenu();
+
+        MenuBuilder menuRichBuilder = new MenuPleasureBuilder("Menu party");
+        MenuPremiumDirector director2 = new MenuPremiumDirector(menuRichBuilder);
+        Menu richMenu = director2.constructPremiumMenu();
+        richMenu.displayMenu();
 
     }
 
