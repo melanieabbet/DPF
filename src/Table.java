@@ -1,6 +1,8 @@
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
+
 import Enum.TypeTable;
 public class Table {
     private final String client;
@@ -9,6 +11,7 @@ public class Table {
     private final ArrayList<Product> productList;
     private TableState tableState;
     private Tax tableTax;
+    private final List<EventListener> listeners = new ArrayList<>(); // Income Observer
 
     public Table(String client, TypeTable type, Tax tableTax){
         this.client = client;
@@ -59,4 +62,12 @@ public class Table {
         double total = getInvoiceSum();
         return tableTax.calculateTax(total); // Let the API define the appropriate calcul
     };
+    public void addListener(EventListener listener){
+        listeners.add(listener);
+    }
+    public void notifyListeners(String eventType){
+        for (EventListener listener : listeners){
+            listener.update(eventType, this);
+        }
+    }
 }

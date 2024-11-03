@@ -157,15 +157,26 @@ public class Restaurant {
 //        richMenu.displayMenu();
 
          //LAB 4.1 Bridge
-        Table privateTable = new Table("Client Privé", TypeTable.PLEASURE, new TaxPrivate());
-        privateTable.addProduct(new RichDish("Soup", 15.0));
-        privateTable.addProduct(new AlcoolDrink("Beer", 5.0));
-        System.out.println(privateTable.calculateTax());
-        Table companyTable = new Table("Client Privé", TypeTable.PLEASURE, new TaxCompany());
-        companyTable.addProduct(new RichDish("Soup", 15.0));
-        companyTable.addProduct(new AlcoolDrink("Beer", 5.0));
-        System.out.println(companyTable.calculateTax());
+//        Table privateTable = new Table("Client Privé", TypeTable.PLEASURE, new TaxPrivate());
+//        privateTable.addProduct(new RichDish("Soup", 15.0));
+//        privateTable.addProduct(new AlcoolDrink("Beer", 5.0));
+//        System.out.println(privateTable.calculateTax());
+//        Table companyTable = new Table("Client Privé", TypeTable.PLEASURE, new TaxCompany());
+//        companyTable.addProduct(new RichDish("Soup", 15.0));
+//        companyTable.addProduct(new AlcoolDrink("Beer", 5.0));
+//        System.out.println(companyTable.calculateTax());
 
+        //LAB 4.2 Observer
+        Income income = Income.getInstance();
+        Table dateTable = new Table("Client Privé", TypeTable.PLEASURE, new TaxPrivate());
+        dateTable.addListener(income);
+
+        dateTable.getState().welcoming(dateTable);
+        dateTable.getState().serve(dateTable,new RichDish("Salad Deluxe", 8.0));
+        dateTable.getState().serve(dateTable, new AlcoolDrink("Mojito", 3.0));
+        income.getIncome();
+        dateTable.getState().close(dateTable);
+        income.getIncome();
     }
 
 }

@@ -28,9 +28,10 @@ public class ServedTableState implements TableState {
     @Override
     public void close(Table table) {
         System.out.println("Thank you for the visit you paid: " + table.getInvoiceSum());
-        //Add table bill to income
-        Income income = Income.getInstance();
-        income.addTableIncome(table);
+        //Add table bill to income (without observer / before LAB 4.2)
+        //Income income = Income.getInstance();
+        //income.addTableIncome(table);
         table.changeState(ClosedTableState.getInstance());
+        table.notifyListeners("close");
     }
 }
