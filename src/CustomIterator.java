@@ -1,2 +1,4 @@
-package PACKAGE_NAME;public interface CustomIterator {
+import java.util.Iterator;
+
+public interface CustomIterator<T> extends Iterator<T> {
 }

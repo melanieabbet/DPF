@@ -10,7 +10,7 @@ public class Table {
     private final TypeTable type;
     private final ArrayList<Product> productList;
     private TableState tableState;
-    private Tax tableTax;
+    private final Tax tableTax;
     private final List<EventListener> listeners = new ArrayList<>(); // Income Observer
 
     public Table(String client, TypeTable type, Tax tableTax){

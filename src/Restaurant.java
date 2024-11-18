@@ -146,15 +146,15 @@ public class Restaurant {
 //        System.out.println(drinkExtraDoseExtraTaste.getPrice());
 //
 //         //LAB 3.2 Patron Builder
-        MenuBuilder menuDietBuilder = new MenuDietBuilder("Menu light");
-        MenuDirector directorClassic = new MenuClassicDirector(menuDietBuilder);
-        Menu dietMenu2 = directorClassic.constructMenu();
-        dietMenu2.displayMenu();
-
-        MenuBuilder menuPleasureBuilder = new MenuPleasureBuilder("Menu party");
-        MenuDirector directorPremium = new MenuPremiumDirector(menuPleasureBuilder);
-        Menu richMenu = directorPremium.constructMenu();
-        richMenu.displayMenu();
+//        MenuBuilder menuDietBuilder = new MenuDietBuilder("Menu light");
+//        MenuDirector directorClassic = new MenuClassicDirector(menuDietBuilder);
+//        Menu dietMenu2 = directorClassic.constructMenu();
+//        dietMenu2.displayMenu();
+//
+//        MenuBuilder menuPleasureBuilder = new MenuPleasureBuilder("Menu party");
+//        MenuDirector directorPremium = new MenuPremiumDirector(menuPleasureBuilder);
+//        Menu richMenu = directorPremium.constructMenu();
+//        richMenu.displayMenu();
 
          //LAB 4.1 Bridge
 //        Table privateTable = new Table("Client Privé", TypeTable.PLEASURE, new TaxPrivate());
@@ -174,9 +174,45 @@ public class Restaurant {
 //        dateTable.getState().welcoming(dateTable);
 //        dateTable.getState().serve(dateTable,new RichDish("Salad Deluxe", 8.0));
 //        dateTable.getState().serve(dateTable, new AlcoolDrink("Mojito", 3.0));
-//        income.getIncome();
+//        income.displayIncome();
 //        dateTable.getState().close(dateTable);
-//        income.getIncome();
+//        income.displayIncome();
+
+        //LAB 5.1 Iterator
+        Income income = Income.getInstance();
+        Table exFiveOneTable = new Table("Client Privé", TypeTable.PLEASURE, new TaxPrivate());
+        Table exFiveTwoTable = new Table("Client Privé", TypeTable.DIET, new TaxPrivate());
+        Table exFiveThreeTable = new Table("Client Privé", TypeTable.PLEASURE, new TaxPrivate());
+        exFiveOneTable.addListener(income);
+        exFiveTwoTable.addListener(income);
+        exFiveThreeTable.addListener(income);
+
+        exFiveOneTable.getState().welcoming(exFiveOneTable);
+        exFiveOneTable.getState().serve(exFiveOneTable,new RichDish("Salad Deluxe", 8.0));
+        exFiveOneTable.getState().serve(exFiveOneTable, new AlcoolDrink("Mojito Deluxe", 3.0));
+        exFiveOneTable.getState().serve(exFiveOneTable, new AlcoolDrink("Mojito Light", 3.0));
+        exFiveOneTable.getState().close(exFiveOneTable);
+
+        exFiveTwoTable.getState().welcoming(exFiveTwoTable);
+        exFiveTwoTable.getState().serve(exFiveTwoTable, new DietDish("Salad", 12.0));
+        exFiveTwoTable.getState().serve(exFiveTwoTable, new LightDrink("Virgin Mojito", 3.0));
+        exFiveTwoTable.getState().serve(exFiveTwoTable, new LightDrink("Water", 2.0));
+        exFiveTwoTable.getState().close(exFiveTwoTable);
+
+        exFiveThreeTable.getState().welcoming(exFiveThreeTable);
+        exFiveThreeTable.getState().serve(exFiveThreeTable,new RichDish("Salad Deluxe", 8.0));
+        exFiveThreeTable.getState().serve(exFiveThreeTable, new AlcoolDrink("Mojito Deluxe", 5.0));
+        exFiveThreeTable.getState().serve(exFiveThreeTable, new AlcoolDrink("Mojito", 3.0));
+        exFiveThreeTable.getState().close(exFiveThreeTable);
+
+        CustomIterator<Table> iteratorOne = income.getTableAboveNumberIncomeIterator(15); //should be 33
+        CustomIterator<Table> iteratorTwo = income.getTableTypeIncomeIterator(TypeTable.DIET); //should be 17
+
+        System.out.println(income.getIncome(iteratorOne));
+        System.out.println(income.getIncome(iteratorTwo));
+
+        // LAB 5.2 a
+
     }
 
 }

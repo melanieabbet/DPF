@@ -1,8 +1,10 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Product {
     //Shared Attribute
     protected String name;
     protected double price;
-
     //Constructor
     public Product(String name, double price){
         this.name = name;
@@ -22,4 +24,5 @@ public abstract class Product {
     public String getType(){
         return null;
     }
+
 }
