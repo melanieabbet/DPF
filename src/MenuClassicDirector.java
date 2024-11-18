@@ -1,11 +1,11 @@
-public class MenuClassicDirector {
+public class MenuClassicDirector implements MenuDirector{
     private final MenuBuilder menuBuilder;
 
     public MenuClassicDirector(MenuBuilder menuBuilder) {
         this.menuBuilder = menuBuilder;
     }
 
-    public Menu constructClassicMenu(){
+    public Menu constructMenu(){
         menuBuilder.setStarter();
         menuBuilder.setMain();
         menuBuilder.setDessert();

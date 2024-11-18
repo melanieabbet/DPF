@@ -146,15 +146,15 @@ public class Restaurant {
 //        System.out.println(drinkExtraDoseExtraTaste.getPrice());
 //
 //         //LAB 3.2 Patron Builder
-//        MenuBuilder menuDietBuilder = new MenuPleasureBuilder("Menu light");
-//        MenuClassicDirector director1 = new MenuClassicDirector(menuDietBuilder);
-//        Menu dietMenu2 = director1.constructClassicMenu();
-//        dietMenu2.displayMenu();
-//
-//        MenuBuilder menuRichBuilder = new MenuPleasureBuilder("Menu party");
-//        MenuPremiumDirector director2 = new MenuPremiumDirector(menuRichBuilder);
-//        Menu richMenu = director2.constructPremiumMenu();
-//        richMenu.displayMenu();
+        MenuBuilder menuDietBuilder = new MenuDietBuilder("Menu light");
+        MenuDirector directorClassic = new MenuClassicDirector(menuDietBuilder);
+        Menu dietMenu2 = directorClassic.constructMenu();
+        dietMenu2.displayMenu();
+
+        MenuBuilder menuPleasureBuilder = new MenuPleasureBuilder("Menu party");
+        MenuDirector directorPremium = new MenuPremiumDirector(menuPleasureBuilder);
+        Menu richMenu = directorPremium.constructMenu();
+        richMenu.displayMenu();
 
          //LAB 4.1 Bridge
 //        Table privateTable = new Table("Client Privé", TypeTable.PLEASURE, new TaxPrivate());
@@ -167,16 +167,16 @@ public class Restaurant {
 //        System.out.println(companyTable.calculateTax());
 
         //LAB 4.2 Observer
-        Income income = Income.getInstance();
-        Table dateTable = new Table("Client Privé", TypeTable.PLEASURE, new TaxPrivate());
-        dateTable.addListener(income);
-
-        dateTable.getState().welcoming(dateTable);
-        dateTable.getState().serve(dateTable,new RichDish("Salad Deluxe", 8.0));
-        dateTable.getState().serve(dateTable, new AlcoolDrink("Mojito", 3.0));
-        income.getIncome();
-        dateTable.getState().close(dateTable);
-        income.getIncome();
+//        Income income = Income.getInstance();
+//        Table dateTable = new Table("Client Privé", TypeTable.PLEASURE, new TaxPrivate());
+//        dateTable.addListener(income);
+//
+//        dateTable.getState().welcoming(dateTable);
+//        dateTable.getState().serve(dateTable,new RichDish("Salad Deluxe", 8.0));
+//        dateTable.getState().serve(dateTable, new AlcoolDrink("Mojito", 3.0));
+//        income.getIncome();
+//        dateTable.getState().close(dateTable);
+//        income.getIncome();
     }
 
 }

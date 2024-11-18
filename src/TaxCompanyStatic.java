@@ -1,7 +1,7 @@
 //Given Class
-public class TaxPrivateStatic {
+public class TaxCompanyStatic {
     public static double calculateTax(double amount) {
-        double sum = amount*0.15;
+        double sum = amount*0.25;
         return sum;
     }
 }

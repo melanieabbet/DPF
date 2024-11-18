@@ -1,13 +1,13 @@
 import static Enum.TypeDish.DIET;
 
-public class MenuPremiumDirector {
+public class MenuPremiumDirector implements MenuDirector {
     private final MenuBuilder menuBuilder;
 
     public MenuPremiumDirector(MenuBuilder menuBuilder) {
         this.menuBuilder = menuBuilder;
     }
 
-    public Menu constructPremiumMenu(){
+    public Menu constructMenu(){
         menuBuilder.setStarter();
         menuBuilder.setMain();
         menuBuilder.setDessert();

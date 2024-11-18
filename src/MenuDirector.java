@@ -1,2 +1,3 @@
-package PACKAGE_NAME;public class MenuDirector {
+public interface MenuDirector {
+    Menu constructMenu();
 }
