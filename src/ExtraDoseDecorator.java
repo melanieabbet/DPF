@@ -8,4 +8,5 @@ public class ExtraDoseDecorator extends ProductDecorator {
         double extraPrice = basePrice * 11;
         return (double) Math.round(extraPrice) / 10; // add 10% price for extra dose
     }
+
 }

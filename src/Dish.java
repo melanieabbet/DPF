@@ -8,6 +8,10 @@ public class Dish extends Product {
     public String getType(){
         return type.name();
     }
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitDish(this);
+    }
 }
 
 

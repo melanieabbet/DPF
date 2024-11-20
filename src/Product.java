@@ -24,5 +24,6 @@ public abstract class Product {
     public String getType(){
         return null;
     }
+    public abstract void accept(Visitor visitor);
 
 }

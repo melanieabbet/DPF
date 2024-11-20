@@ -179,40 +179,58 @@ public class Restaurant {
 //        income.displayIncome();
 
         //LAB 5.1 Iterator
-        Income income = Income.getInstance();
-        Table exFiveOneTable = new Table("Client Privé", TypeTable.PLEASURE, new TaxPrivate());
-        Table exFiveTwoTable = new Table("Client Privé", TypeTable.DIET, new TaxPrivate());
-        Table exFiveThreeTable = new Table("Client Privé", TypeTable.PLEASURE, new TaxPrivate());
-        exFiveOneTable.addListener(income);
-        exFiveTwoTable.addListener(income);
-        exFiveThreeTable.addListener(income);
+//        Income income = Income.getInstance();
+//        Table exFiveOneTable = new Table("Client Privé", TypeTable.PLEASURE, new TaxPrivate());
+//        Table exFiveTwoTable = new Table("Client Privé", TypeTable.DIET, new TaxPrivate());
+//        Table exFiveThreeTable = new Table("Client Privé", TypeTable.PLEASURE, new TaxPrivate());
+//        exFiveOneTable.addListener(income);
+//        exFiveTwoTable.addListener(income);
+//        exFiveThreeTable.addListener(income);
+//
+//        exFiveOneTable.getState().welcoming(exFiveOneTable);
+//        exFiveOneTable.getState().serve(exFiveOneTable,new RichDish("Salad Deluxe", 8.0));
+//        exFiveOneTable.getState().serve(exFiveOneTable, new AlcoolDrink("Mojito Deluxe", 3.0));
+//        exFiveOneTable.getState().serve(exFiveOneTable, new AlcoolDrink("Mojito Light", 3.0));
+//        exFiveOneTable.getState().close(exFiveOneTable);
+//
+//        exFiveTwoTable.getState().welcoming(exFiveTwoTable);
+//        exFiveTwoTable.getState().serve(exFiveTwoTable, new DietDish("Salad", 12.0));
+//        exFiveTwoTable.getState().serve(exFiveTwoTable, new LightDrink("Virgin Mojito", 3.0));
+//        exFiveTwoTable.getState().serve(exFiveTwoTable, new LightDrink("Water", 2.0));
+//        exFiveTwoTable.getState().close(exFiveTwoTable);
+//
+//        exFiveThreeTable.getState().welcoming(exFiveThreeTable);
+//        exFiveThreeTable.getState().serve(exFiveThreeTable,new RichDish("Salad Deluxe", 8.0));
+//        exFiveThreeTable.getState().serve(exFiveThreeTable, new AlcoolDrink("Mojito Deluxe", 5.0));
+//        exFiveThreeTable.getState().serve(exFiveThreeTable, new AlcoolDrink("Mojito", 3.0));
+//        exFiveThreeTable.getState().close(exFiveThreeTable);
+//
+//        CustomIterator<Table> iteratorOne = income.getTableAboveNumberIncomeIterator(15); //should be 33
+//        CustomIterator<Table> iteratorTwo = income.getTableTypeIncomeIterator(TypeTable.DIET); //should be 17
+//
+//        System.out.println(income.getIncome(iteratorOne));
+//        System.out.println(income.getIncome(iteratorTwo));
 
-        exFiveOneTable.getState().welcoming(exFiveOneTable);
-        exFiveOneTable.getState().serve(exFiveOneTable,new RichDish("Salad Deluxe", 8.0));
-        exFiveOneTable.getState().serve(exFiveOneTable, new AlcoolDrink("Mojito Deluxe", 3.0));
-        exFiveOneTable.getState().serve(exFiveOneTable, new AlcoolDrink("Mojito Light", 3.0));
-        exFiveOneTable.getState().close(exFiveOneTable);
+        // LAB 5.2
+        Statistics statistics = Statistics.getInstance();
 
-        exFiveTwoTable.getState().welcoming(exFiveTwoTable);
-        exFiveTwoTable.getState().serve(exFiveTwoTable, new DietDish("Salad", 12.0));
-        exFiveTwoTable.getState().serve(exFiveTwoTable, new LightDrink("Virgin Mojito", 3.0));
-        exFiveTwoTable.getState().serve(exFiveTwoTable, new LightDrink("Water", 2.0));
-        exFiveTwoTable.getState().close(exFiveTwoTable);
+        Drink drink01Lab5 = new AlcoolDrink("Mojito Deluxe", 5.0);
+        statistics.addProductToStatistic(drink01Lab5);
+        Drink drink02Lab5 = new LightDrink("Mojito Virgin", 3.0);
+        statistics.addProductToStatistic(drink02Lab5);
+        Drink drink03Lab5 = new AlcoolDrink("Mojito", 4.0);
+        statistics.addProductToStatistic(drink03Lab5);
+        Drink drink04Lab5 = new GaseousDrink("Coke", 3.0);
+        statistics.addProductToStatistic(drink04Lab5);
+        Dish dish01Lab5 = new RichDish("Salad Deluxe", 8.0);
+        statistics.addProductToStatistic(dish01Lab5);
+        Dish dish02Lab5 = new DietDish("Salad", 6.0);
+        statistics.addProductToStatistic(dish02Lab5);
+        Dish dish03Lab5 = new VeganDish("Soup", 4.0);
+        statistics.addProductToStatistic(dish03Lab5);
 
-        exFiveThreeTable.getState().welcoming(exFiveThreeTable);
-        exFiveThreeTable.getState().serve(exFiveThreeTable,new RichDish("Salad Deluxe", 8.0));
-        exFiveThreeTable.getState().serve(exFiveThreeTable, new AlcoolDrink("Mojito Deluxe", 5.0));
-        exFiveThreeTable.getState().serve(exFiveThreeTable, new AlcoolDrink("Mojito", 3.0));
-        exFiveThreeTable.getState().close(exFiveThreeTable);
-
-        CustomIterator<Table> iteratorOne = income.getTableAboveNumberIncomeIterator(15); //should be 33
-        CustomIterator<Table> iteratorTwo = income.getTableTypeIncomeIterator(TypeTable.DIET); //should be 17
-
-        System.out.println(income.getIncome(iteratorOne));
-        System.out.println(income.getIncome(iteratorTwo));
-
-        // LAB 5.2 a
-
+        statistics.exportProducts("products.csv");
+        System.out.println("Exportation des produits terminée !");
     }
 
 }

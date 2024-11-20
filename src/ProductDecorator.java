@@ -5,5 +5,9 @@ ProductDecorator(Product source){
     super(source.getName(), source.getPrice());
     this.wrappee = source;
 }
-
+    @Override
+    public void accept(Visitor visitor) {
+        // Délègue le traitement au produit sous-jacent
+        wrappee.accept(visitor);
+    }
 }
