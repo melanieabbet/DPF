@@ -1,4 +1,8 @@
 import Enum.TypeDish;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Dish extends Product {
     private final TypeDish type;
     public Dish(String name, double price, TypeDish type){
@@ -10,7 +14,15 @@ public class Dish extends Product {
     }
     @Override
     public void accept(Visitor visitor) {
-        visitor.visitDish(this);
+        visitor.visitProduct(this);
+    }
+    @Override
+    public void exportCSV(String filePath) {
+        try (FileWriter writer = new FileWriter(filePath, true)) {
+            writer.write(String.format("Dish,%s,%.2f,%s%n", getName(), getPrice(), getType()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 

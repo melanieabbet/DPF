@@ -23,7 +23,7 @@ public class Statistics {
     public void exportProducts(String filePath) {
         Visitor visitor = new CSVExporter(filePath);
         for (Product product : products) {
-            product.accept(visitor);
+            visitor.visitProduct(product);
         }
     }
 

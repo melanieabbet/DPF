@@ -26,4 +26,6 @@ public abstract class Product {
     }
     public abstract void accept(Visitor visitor);
 
+    public abstract void exportCSV(String filePath);
+
 }

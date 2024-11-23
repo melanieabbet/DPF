@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +33,14 @@ public class Menu extends Product {
     }
     @Override
     public void accept(Visitor visitor) {
-        visitor.visitMenu(this);
+        visitor.visitProduct(this);
+    }
+    @Override
+    public void exportCSV(String filePath) {
+        try (FileWriter writer = new FileWriter(filePath, true)) {
+            writer.write(String.format("Menu,%s,%.2f,%s%n", getName(), getPrice(), getType()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

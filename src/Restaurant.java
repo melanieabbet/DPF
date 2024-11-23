@@ -229,6 +229,16 @@ public class Restaurant {
         Dish dish03Lab5 = new VeganDish("Soup", 4.0);
         statistics.addProductToStatistic(dish03Lab5);
 
+        Menu menu01Lab5 = new Menu("Gourmet Menu", TypeMenu.PLEASURE);
+        menu01Lab5.addProduct(new RichDish("Steak Deluxe", 15.0));
+        menu01Lab5.addProduct(new AlcoolDrink("Gin Tonic", 3.0));
+        statistics.addProductToStatistic(menu01Lab5);
+
+        Menu menu02Lab5 = new Menu("Healthy Menu", TypeMenu.DIET);
+        menu02Lab5.addProduct(new DietDish("Green Salad", 7.0));
+        menu02Lab5.addProduct(new LightDrink("Green Smoothie", 5.0));
+        statistics.addProductToStatistic(menu02Lab5);
+
         statistics.exportProducts("products.csv");
         System.out.println("Exportation des produits terminée !");
     }
